@@ -42,14 +42,6 @@ function Dashboard() {
     }
   }, [controls2, inView2]);
 
-  useEffect(() => {
-    const storedUsername = localStorage.getItem("username");
-    if (storedUsername) {
-      setUsername(storedUsername);
-    } else {
-      console.log("User is not logged in");
-    }
-  }, []);
 
   const products = [
     {
@@ -84,15 +76,17 @@ function Dashboard() {
 
   const [username, setUsername] = useState("");
   useEffect(() => {
-    const storedUsername = localStorage.getItem("username");
-    if (storedUsername) {
-      setUsername(storedUsername);
-    } else {
-      console.log("User is not logged in");
+    if (typeof window !== "undefined") {  // Check for client-side
+      const storedUsername = localStorage.getItem("username");
+      if (storedUsername) {
+        setUsername(storedUsername);
+      } else {
+        console.log("User is not logged in");
+      }
     }
   }, []);
 
-  if (!localStorage.getItem("username")) {
+  if (!username) {
     return (
       <>
         <Error text="You cannot visit this page, kindly login again." />
