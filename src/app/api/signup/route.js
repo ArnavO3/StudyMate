@@ -22,6 +22,7 @@ export async function POST(req) {
       student,
       age,
     });
+    console.log(newUser);
 
     const savedUser = await newUser.save();
     return new Response(

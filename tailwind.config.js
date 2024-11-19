@@ -13,6 +13,9 @@ module.exports = {
   },
   theme: {
     extend: {
+      fontFamily:{
+        FunnelDisplay: "var(--font-funnel-display)",
+      },
       screens: {
         sm: "425px",
         // => @media (min-width: 992px) { ... }
